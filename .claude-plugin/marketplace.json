@@ -1,11 +1,11 @@
 {
-  "name": "yaros-skills",
+  "name": "yarikleto",
   "owner": {
     "name": "Yaroslav Pakhaliuk"
   },
   "plugins": [
     {
-      "name": "yaros-skills",
+      "name": "@yarikleto/claude-skills",
       "source": "."
     }
   ]
