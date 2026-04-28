@@ -18,7 +18,30 @@
 
 ## Install
 
-This repo is both a plugin and its own marketplace. In Claude Code:
+Pick the route that fits.
+
+### CLI — pick individual skills
+
+The repo ships a small interactive CLI that copies any skill into either your user-level or the current project's `.claude/skills/` directory.
+
+```bash
+npx @yarikleto/claude-skills            # interactive menu
+npx @yarikleto/claude-skills list       # show all skills + installed state
+npx @yarikleto/claude-skills add        # interactive picker
+npx @yarikleto/claude-skills add electron-debug --scope user
+npx @yarikleto/claude-skills remove electron-debug --scope project
+```
+
+Scopes:
+
+- `user` → `~/.claude/skills/<name>/` — available in every project
+- `project` → `./.claude/skills/<name>/` — scoped to the current working dir
+
+Pass `--scope` to skip the prompt. Pass `-y/--yes` to skip confirmations. Run `--help` for the full usage.
+
+### Plugin — install everything
+
+This repo is also a Claude Code plugin and its own marketplace. In Claude Code:
 
 ```text
 /plugin marketplace add yarikleto/claude-skills
@@ -43,7 +66,7 @@ claude --plugin-dir /path/to/claude-skills
 
 1. Create `skills/<skill-name>/SKILL.md` with frontmatter (`name`, `description`).
 2. Add any helper files under `skills/<skill-name>/` (e.g. `scripts/`, `templates/`). Reference them from `SKILL.md` using `${CLAUDE_PLUGIN_ROOT}/skills/<skill-name>/...` so paths resolve regardless of which project the skill runs from.
-3. Bump the version in `.claude-plugin/plugin.json`.
+3. Bump the version in both `.claude-plugin/plugin.json` and `package.json`.
 4. Commit and push.
 
 ## Layout
@@ -52,6 +75,8 @@ claude --plugin-dir /path/to/claude-skills
 .claude-plugin/
   plugin.json        plugin manifest
   marketplace.json   marketplace manifest (so this repo installs directly)
+bin/
+  skills.js          the claude-skills CLI
 skills/
   <skill-name>/
     SKILL.md

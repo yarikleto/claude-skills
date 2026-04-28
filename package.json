@@ -1,0 +1,29 @@
+{
+  "name": "@yarikleto/claude-skills",
+  "version": "0.4.0",
+  "description": "CLI for installing individual Claude Code skills from the @yarikleto/claude-skills collection.",
+  "type": "module",
+  "bin": {
+    "claude-skills": "./bin/skills.js"
+  },
+  "files": [
+    "bin",
+    "skills",
+    ".claude-plugin",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.2.1",
+    "picocolors": "^1.1.1"
+  },
+  "author": "Yaroslav Pakhaliuk",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yarikleto/claude-skills.git"
+  },
+  "homepage": "https://github.com/yarikleto/claude-skills#readme"
+}
